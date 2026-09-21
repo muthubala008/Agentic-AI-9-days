@@ -1,0 +1,318 @@
+AI / NLP / AGENTIC AI BASIC CONCEPTS
+
+1. NLP SHORT-TERM MEMORY
+Short-term memory means the information an AI system can use from the current conversation or current task.
+
+Example:
+User: "Who is the CEO of Microsoft?"
+AI: "Satya Nadella."
+User: "When did he become CEO?"
+The system uses the previous message to understand that "he" refers to Satya Nadella.
+
+It can include:
+- Recent conversation messages
+- Current task information
+- Recent instructions
+- Information needed for the current task
+
+Short-term memory is usually limited by the amount of context the system can process.
+
+2. NLP LONG-TERM MEMORY
+Long-term memory means information that can be stored and retrieved across different conversations or sessions.
+
+Example:
+A user tells an AI application, "My preferred programming language is Python." If this is intentionally stored, the application may use it in a future conversation.
+
+It can store:
+- User preferences
+- Important facts
+- Previous interactions
+- Learned information
+- Application-specific knowledge
+
+A database or vector database can be used to store and retrieve long-term information.
+
+Short-term vs long-term:
+- Short-term memory -> current context
+- Long-term memory -> information retained for future use
+
+3. DATA AUGMENTATION
+Data augmentation is the process of creating additional training examples from existing data by applying valid transformations.
+
+Purpose:
+- Increase training-data variety
+- Reduce overfitting
+- Improve model robustness
+
+Image examples:
+- Rotation
+- Cropping
+- Flipping
+- Changing brightness
+- Adding small amounts of noise
+
+Text examples:
+- Paraphrasing
+- Replacing words with suitable alternatives
+- Back translation
+- Generating additional examples while preserving meaning
+
+Audio examples:
+- Adding background noise
+- Changing volume
+- Small changes in speed or pitch
+
+Important: The augmentation should preserve the correct label. A transformation that changes the meaning can create incorrect training data.
+
+4. DATA IMBALANCE
+Data imbalance occurs when some classes have many more examples than other classes.
+
+Example:
+Fraud detection:
+- Normal transactions: 9,900
+- Fraudulent transactions: 100
+
+A model may become biased toward the majority class. A model that always predicts "normal" could have high accuracy while failing to detect fraud.
+
+Ways to handle imbalance:
+- Collect more minority-class data
+- Oversample the minority class
+- Undersample the majority class
+- Use synthetic data generation such as SMOTE
+- Use class weights
+- Use suitable evaluation metrics
+
+Useful metrics:
+- Precision
+- Recall
+- F1-score
+- Confusion matrix
+- Precision-Recall curve
+
+Important: Accuracy alone may not be sufficient for strongly imbalanced datasets.
+
+5. WORKFLOW VS AGENT
+A workflow is a predefined sequence of steps designed to complete a task.
+
+Example workflow:
+User request -> Validate input -> Search database -> Process result -> Return answer
+
+An agent is a system that can use a model, instructions, tools, and memory to decide what actions to take toward a goal.
+
+Example:
+User: "Find the prerequisites for Machine Learning and recommend useful resources."
+
+The agent may:
+1. Understand the request.
+2. Search the course database.
+3. Find prerequisites.
+4. Search resources.
+5. Combine the information.
+6. Return the answer.
+
+Main difference:
+Workflow:
+- Predefined path
+- Steps are designed in advance
+- More predictable
+- Good for fixed processes
+
+Agent:
+- Dynamic decision-making
+- Can select tools based on the task
+- Can repeat actions when necessary
+- Useful when the exact steps are not known in advance
+
+Simple idea:
+Workflow = "Follow these steps."
+Agent = "Decide which steps are needed to achieve the goal."
+
+6. AGENT - FOUR MAIN PARTS
+The four important parts are:
+1. Model
+2. Instructions
+3. Tools
+4. Memory
+
+6.1 MODEL
+The model is the reasoning and language component of the agent.
+
+It can:
+- Understand the user's request
+- Analyze information
+- Decide which tool may be useful
+- Generate responses
+- Interpret tool results
+
+Example:
+User: "What are the prerequisites for AI301?"
+The model understands that it needs course information and may decide to use a database-search tool.
+
+Important:
+The model does not automatically execute application code. Tools are used when the agent needs to interact with external systems or perform actions.
+
+In simple terms:
+Model = "The part that understands and decides."
+
+6.2 INSTRUCTIONS
+Instructions tell the agent how it should behave and what it should accomplish.
+
+They can define:
+- Agent role
+- Task
+- Rules and constraints
+- Response style
+- Information priorities
+
+Example:
+"You are an academic assistant. Help students find course prerequisites and learning resources. Give clear and concise answers."
+
+In simple terms:
+Instructions = "How the agent should behave."
+
+6.3 TOOLS
+Tools allow an agent to interact with external systems and perform actions.
+
+Examples:
+- Database search
+- Web search
+- Calculator
+- File reader
+- API
+- Email system
+- Code execution
+- Calendar
+
+Example:
+User: "What are the prerequisites for AI301?"
+The agent may call:
+search_course("AI301")
+The tool retrieves the actual course information.
+
+Important:
+The model decides that a tool should be used, but the tool performs the actual operation.
+
+In simple terms:
+Tools = "What the agent can do."
+
+6.4 MEMORY
+Memory allows an agent to retain and retrieve useful information.
+
+It can include:
+- Conversation history
+- User preferences
+- Previous task results
+- Stored knowledge
+- Database records
+
+Two useful categories:
+Short-term memory -> information relevant to the current conversation or task.
+Long-term memory -> information stored for possible future use.
+
+In simple terms:
+Memory = "What the agent can remember."
+
+7. AGENT LOOP
+The agent loop is the repeated process through which an agent understands a task, decides what to do, uses tools when necessary, observes results, and continues until the task is complete.
+
+Basic loop:
+
+User Request
+    |
+    v
+Understand the request
+    |
+    v
+Model decides what to do
+    |
+    v
+Need a tool?
+   /       \
+ Yes        No
+  |          |
+  v          v
+Call tool   Generate answer
+  |
+  v
+Receive tool result
+  |
+  v
+Observe result
+  |
+  v
+Model decides next step
+  |
+  +-------> Continue if needed
+  |
+  v
+Final answer
+
+Step 1: RECEIVE INPUT
+The agent receives the user's request.
+Example: "Find the prerequisites for Machine Learning."
+
+Step 2: UNDERSTAND THE TASK
+The model interprets what the user wants and identifies the required information.
+
+Step 3: DECIDE WHAT TO DO
+The model determines the next action.
+Example: "I need to search the course database."
+
+Step 4: CALL A TOOL
+The agent calls the appropriate tool.
+Example: search_course("Machine Learning")
+
+Step 5: OBSERVE THE RESULT
+The tool returns information.
+Example: "Prerequisites: Python and Statistics."
+
+Step 6: REASON ABOUT THE RESULT
+The model checks whether it has enough information.
+- If enough information is available -> produce the final answer.
+- If more information is needed -> use another tool or continue the loop.
+
+Step 7: FINAL RESPONSE
+The agent gives the user the answer.
+
+WHY THE AGENT LOOP IS IMPORTANT
+A normal program may follow a fixed sequence.
+
+An agent can repeatedly:
+Decide -> Act -> Observe -> Decide again
+
+This helps an agent handle tasks where the required actions are not completely known beforehand.
+
+QUICK SUMMARY
+
+NLP Short-Term Memory:
+Information from the current context.
+
+NLP Long-Term Memory:
+Information stored for possible future retrieval.
+
+Data Augmentation:
+Creates useful variations of existing training data.
+
+Data Imbalance:
+Occurs when some classes have much more data than others.
+
+Workflow:
+A predefined sequence of steps.
+
+Agent:
+A system that can dynamically decide actions to achieve a goal.
+
+Model:
+Understands information and helps make decisions.
+
+Instructions:
+Rules that guide the agent's behavior.
+
+Tools:
+External capabilities that allow the agent to perform actions.
+
+Memory:
+Information the agent can retain and retrieve.
+
+Agent Loop:
+Understand -> Decide -> Act -> Observe -> Repeat -> Finish.
