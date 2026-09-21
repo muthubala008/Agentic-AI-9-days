@@ -1,0 +1,301 @@
+MACHINE LEARNING AND AI BASIC CONCEPTS
+
+1. MACHINE LEARNING
+Machine Learning (ML) is a branch of Artificial Intelligence (AI) that allows computers to learn patterns from data and make predictions or decisions without being explicitly programmed for every situation.
+
+How it works:
+1. Collect data.
+2. Clean and prepare the data.
+3. Choose a machine learning algorithm.
+4. Train the model using data.
+5. Test and evaluate the model.
+6. Use the trained model to make predictions.
+
+Example:
+If we provide a model with information about houses such as area, number of rooms, and location along with their prices, the model can learn the relationship between these features and house prices. It can then predict the price of a new house.
+
+Main types of Machine Learning:
+- Supervised Learning
+- Unsupervised Learning
+- Reinforcement Learning
+
+
+2. REGRESSION
+Regression is a supervised machine learning technique used to predict a continuous numerical value.
+
+Examples:
+- Predicting house prices.
+- Predicting temperature.
+- Predicting sales.
+- Predicting a student's marks.
+
+Example:
+Input: House area = 1500 sq.ft.
+Output: Predicted price = Rs. 75 lakhs.
+
+Common regression algorithms:
+- Linear Regression
+- Multiple Linear Regression
+- Polynomial Regression
+- Decision Tree Regression
+- Random Forest Regression
+
+In simple terms:
+Regression answers questions such as:
+"How much?"
+"What value will we get?"
+
+The output is usually a number.
+
+
+3. CLASSIFICATION
+Classification is a supervised machine learning technique used to predict a category or class.
+
+Examples:
+- Email -> Spam or Not Spam
+- Patient -> Disease or No Disease
+- Transaction -> Fraud or Not Fraud
+- Image -> Cat or Dog
+
+Example:
+Input: Email content
+Output: Spam
+
+Types:
+- Binary Classification: Two classes, such as Yes/No.
+- Multiclass Classification: More than two classes, such as Red/Green/Blue.
+- Multilabel Classification: One item can belong to multiple classes.
+
+Common classification algorithms:
+- Logistic Regression
+- Decision Tree
+- Random Forest
+- Support Vector Machine (SVM)
+- K-Nearest Neighbors (KNN)
+- Neural Networks
+
+In simple terms:
+Classification answers:
+"Which category does this belong to?"
+
+
+4. OUTLIER
+An outlier is a data point that is significantly different from most other data points in a dataset.
+
+Example:
+Marks: 70, 72, 68, 75, 71, 10
+
+Here, 10 may be an outlier because it is much lower than the other values.
+
+Outliers can occur because of:
+- Measurement errors
+- Data entry errors
+- Sensor problems
+- Rare events
+- Genuine unusual observations
+
+Why are outliers important?
+Outliers can affect machine learning models, especially regression models, and can make statistical calculations misleading.
+
+Common methods for detecting outliers:
+- IQR (Interquartile Range) method
+- Z-score
+- Box plots
+- Isolation Forest
+
+Important:
+An outlier should not automatically be deleted. First, determine whether it is an error or a genuine observation.
+
+
+5. BACKPROPAGATION
+Backpropagation is an algorithm used to train artificial neural networks. It helps the network adjust its weights so that its predictions become closer to the correct answers.
+
+Basic process:
+1. Input data is given to the neural network.
+2. The network performs a forward pass and produces a prediction.
+3. The prediction is compared with the actual answer.
+4. A loss/error is calculated.
+5. Backpropagation calculates how much each weight contributed to the error.
+6. The weights are updated, usually using gradient descent.
+7. The process is repeated for many training examples.
+
+Simple example:
+Suppose a neural network predicts 80, but the actual value is 100.
+The model calculates the error and determines how its weights should change.
+After updating the weights, the next prediction may become closer to 100.
+
+In simple terms:
+Forward propagation -> make a prediction
+Backpropagation -> find how weights caused the error
+Weight update -> improve the model
+
+
+6. UNSUPERVISED LEARNING
+Unsupervised learning is a type of machine learning where the training data does not contain labeled answers.
+
+The model tries to discover hidden patterns, groups, or structures in the data by itself.
+
+Example:
+Suppose a shopping website has customer information but no predefined customer categories. An unsupervised learning algorithm can group customers based on their shopping behavior.
+
+Common techniques:
+- Clustering
+- Dimensionality Reduction
+- Association Rule Learning
+
+Common algorithms:
+- K-Means Clustering
+- Hierarchical Clustering
+- DBSCAN
+- Principal Component Analysis (PCA)
+
+In simple terms:
+Unsupervised learning asks:
+"What patterns or groups exist in this data?"
+
+
+7. SUPERVISED LEARNING
+Supervised learning is a type of machine learning where the model learns from labeled data.
+
+Labeled data means that both the input and the correct output are provided during training.
+
+Example:
+Input: Hours studied = 5
+Output: Marks = 80
+
+The model learns the relationship between hours studied and marks. It can then predict the marks for a new student.
+
+Two major supervised learning tasks:
+- Regression -> predicts a numerical value.
+- Classification -> predicts a category.
+
+In simple terms:
+Supervised learning learns from examples where the correct answer is already known.
+
+
+8. WEB HOOK / WEBHOOK
+A webhook is a way for one application to automatically send information to another application when a specific event happens.
+
+A webhook usually works through an HTTP request, often a POST request.
+
+Example:
+1. A customer makes a payment.
+2. The payment service detects the successful payment.
+3. It sends an HTTP request to the website's webhook URL.
+4. The website receives the event.
+5. The website updates the order or payment status.
+
+Webhook example:
+Payment Service
+      |
+      | HTTP POST
+      v
+Your Server/Webhook URL
+      |
+      v
+Update Database
+
+Webhooks are commonly used for:
+- Payment notifications
+- GitHub events
+- Form submissions
+- Order updates
+- Notifications
+- CI/CD automation
+
+Webhook vs API:
+- API: Your application usually asks another service for information.
+- Webhook: Another service automatically sends information to your application when an event occurs.
+
+Note:
+The correct term is usually "webhook," not "web hoop."
+
+
+9. NLP (NATURAL LANGUAGE PROCESSING)
+Natural Language Processing (NLP) is a field of Artificial Intelligence that enables computers to understand, process, analyze, and generate human language.
+
+Examples:
+- Chatbots
+- Voice assistants
+- Language translation
+- Sentiment analysis
+- Spam detection
+- Text summarization
+- Question answering
+
+Example:
+User: "What is the weather today?"
+An NLP system processes the words, identifies the user's intent, and produces an appropriate response.
+
+Basic NLP steps can include:
+1. Collect text data.
+2. Clean and preprocess the text.
+3. Tokenize the text.
+4. Convert text into numerical representations.
+5. Train or use a language model.
+6. Generate or classify the output.
+
+Important NLP concepts:
+- Tokenization: Splitting text into smaller units such as words or tokens.
+- Stop words: Common words that may sometimes be removed during preprocessing.
+- Stemming: Reducing words to a simpler root form.
+- Lemmatization: Converting words to their dictionary base form.
+- Embeddings: Representing words or text as numerical vectors.
+- Transformers: A neural network architecture widely used in modern NLP.
+
+In simple terms:
+NLP helps computers work with human language.
+
+
+QUICK COMPARISON
+
+Supervised Learning:
+- Uses labeled data.
+- Learns from known answers.
+- Main tasks: Regression and Classification.
+
+Unsupervised Learning:
+- Uses unlabeled data.
+- Finds hidden patterns or groups.
+- Main tasks: Clustering and dimensionality reduction.
+
+Regression:
+- Predicts a numerical value.
+- Example: House price.
+
+Classification:
+- Predicts a category.
+- Example: Spam or not spam.
+
+Outlier:
+- A data point that is unusually different from most observations.
+
+Backpropagation:
+- Trains neural networks by calculating errors and updating weights.
+
+Webhook:
+- Automatically sends event information from one application to another.
+
+NLP:
+- Enables computers to process and understand human language.
+
+
+ONE-LINE DEFINITIONS
+
+Machine Learning -> Learning patterns from data to make predictions or decisions.
+
+Regression -> Predicting a continuous numerical value.
+
+Classification -> Predicting a class or category.
+
+Outlier -> A data point that is unusually different from the rest of the dataset.
+
+Backpropagation -> A method for calculating neural-network errors and updating weights during training.
+
+Unsupervised Learning -> Learning patterns from unlabeled data.
+
+Supervised Learning -> Learning from labeled data with known outputs.
+
+Webhook -> An automatic HTTP notification sent when an event occurs.
+
+NLP -> AI techniques that allow computers to process and understand human language.
