@@ -1,0 +1,105 @@
+TYPE HINTS
+
+• What it is: Annotations in code that explicitly declare the expected data
+type of variables, function parameters, and return values (e.g., in Python).
+• Role in Agentic AI: Agents often interact with tools and functions via Structured
+Outputs or Function Calling. LLMs read type hints (like str, int, List[dict])
+to understand what parameters a tool accepts, generating precise JSON payloads
+without schema errors.
+
+WHY LONGER CONVERSATIONS COST MORE
+
+• What it is: LLMs process interactions through tokens, charging based on input
+and output volume.
+• Context Window Overhead: LLMs are stateless (they do not naturally remember
+past messages). To maintain context, every new message requires sending the
+entire conversation history back to the model.
+• Scaling Costs: If Message 1 is 100 tokens and Message 2 is 100 tokens:
+- Turn 1: You pay for 100 tokens.
+- Turn 2: You pay for 200 tokens (Turn 1 + Turn 2).
+- Turn 3: You pay for 300 tokens (Turn 1 + Turn 2 + Turn 3).
+As conversation length grows, input token usage grows exponentially, directly
+increasing latency and API usage costs.
+
+STATELESS PROCESSING
+
+• What it is: An architecture design where each request from a client to a server
+or model is processed independently, without relying on stored session information
+on the server.
+• Role in Agentic AI: LLM APIs (like OpenAI, Anthropic, Gemini) are stateless.
+They do not remember previous API calls. The developer or agent orchestrator
+must explicitly store memory (in a database or key-value store) and pass
+relevant context in each API call.
+
+HASH & DECRYPT
+
+• Hash (One-Way):
+- A cryptographic algorithm (e.g., SHA-256) that converts input data of any
+length into a fixed-size string of characters.
+- One-way process: It is mathematically impossible to reverse (de-hash) a
+hash back into the original data. Used for integrity checks and password
+storage.
+• Decrypt (Two-Way):
+- The process of taking encrypted, unreadable text (ciphertext) and converting
+it back to its original readable format (plaintext) using a secret secret key.
+• Role in Agentic AI: Hashing is used to cache LLM queries (semantic caching)
+and secure agent state IDs, while decryption is used when agents access
+encrypted user data or API keys securely.
+
+HEARTBEAT
+
+• What it is: A periodic signal (ping) sent from a worker, node, or agent to a
+central monitor or orchestrator to communicate that it is still active and
+functioning normally.
+• Role in Agentic AI: Autonomous agents running complex, long-running tasks
+(like web scraping or heavy code execution) send heartbeats. If an agent crashes
+or hangs, the missing heartbeat informs the system to restart the process or
+reassign the task to another worker agent.
+
+QUEUE AND WORKER
+
+• Queue: A First-In, First-Out (FIFO) buffer that stores incoming tasks waiting
+to be processed.
+• Worker: An independent background process/agent that pulls tasks from the queue
+and executes them asynchronously.
+• Role in Agentic AI: AI operations can be slow and rate-limited. Using queues
+(e.g., Redis, RabbitMQ, Celery) prevents system bottlenecks. Users place
+requests in a queue, and multiple worker agents process those tasks in parallel
+without blocking the main user interface.
+
+DEADLOCK
+
+• What it is: A situation where two or more processes are unable to proceed
+because each is waiting for the other to release a resource (e.g., Process A
+holds Resource 1 and waits for Resource 2; Process B holds Resource 2 and
+waits for Resource 1).
+• Role in Agentic AI: Occurs when multi-agent systems interact or request resources
+dependently. For example, Agent A waits for Agent B to finalize a report,
+while Agent B is waiting for Agent A to approve raw data—causing both to stall
+indefinitely unless timeout handlers exist.
+
+LEASE
+
+• What it is: A time-bound grant of control or lock given to a specific client/worker
+over a shared resource or task.
+• Role in Agentic AI: When an agent picks up a task, it is granted a "lease"
+for a specific duration (e.g., 5 minutes). If the task is completed, the lease
+is released. If the worker fails, the lease naturally expires, making the task
+available to other agents again.
+
+CLAIM_NEXT
+
+• What it is: A function or pattern used by queue workers to atomically fetch
+and reserve the next available task from a queue.
+• Role in Agentic AI: Prevents race conditions. In a multi-agent backend, multiple
+worker agents simultaneously request work. claim_next() ensures that two
+agents do not claim or execute the exact same user request.
+
+REAP_EXPIRED
+
+• What it is: A cleanup mechanism or background job that identifies tasks whose
+leases or heartbeats have expired without completion.
+• Role in Agentic AI: If an agent handling a task encounters an unhandled error,
+times out, or loses network connectivity, reap_expired detects the abandoned
+task, resets its status back to "pending," and returns it to the queue so a
+healthy agent can retry it.
